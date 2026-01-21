@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+</head>
+<body>
+
+    <h2>Calculator</h2>
+
+    <h4>1: Addition</h4>
+    <h4>2: Subtraction</h4>
+    <h4>3: Multiplication</h4>
+    <h4>4: Division</h4>
+
+    <p id="result"></p>
+
+<script>
+    let x = Number(prompt("Enter Number For Operation"));
+    let a = Number(prompt("Enter First Number"));
+    let b = Number(prompt("Enter Second Number"));
+
+    let output;
+
+    switch (x) {
+        case 1:
+            output = a + b;
+            break;
+        case 2:
+            output = a - b;
+            break;
+        case 3:
+            output = a * b;
+            break;
+        case 4:
+            output = a / b;
+            break;
+        default:
+            output = "Invalid Operation";
+    }
+
+    document.getElementById("result").innerText = "Result: " + output;
+</script>
+
+</body>
+</html>

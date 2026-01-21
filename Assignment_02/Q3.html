@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tax Calculator</title>
+</head>
+<body>
+
+    <h2>Tax Calculator</h2>
+
+    <h4>Tax Slabs</h4>
+    <p>Salary ≤ 5,00,000 → 0% Tax</p>
+    <p>5,00,001 – 10,00,000 → 10% Tax</p>
+    <p>10,00,001 – 15,00,000 → 20% Tax</p>
+    <p>Above 15,00,000 → 30% Tax</p>
+
+    <p id="result"></p>
+
+<script>
+    function findTax(salary) {
+        let tax;
+
+        switch (true) {
+            case (salary > 0 && salary <= 500000):
+                tax = 0;
+                break;
+
+            case (salary > 500000 && salary <= 1000000):
+                tax = salary * 0.10;
+                break;
+
+            case (salary > 1000000 && salary <= 1500000):
+                tax = salary * 0.20;
+                break;
+
+            case (salary > 1500000):
+                tax = salary * 0.30;
+                break;
+
+            default:
+                tax = "Invalid Salary";
+        }
+
+        return tax;
+    }
+
+    let salary = Number(prompt("Enter Your Salary"));
+    let taxAmount = findTax(salary);
+
+    document.getElementById("result").innerText =
+        "Salary: ₹" + salary + " | Tax Amount: ₹" + taxAmount;
+</script>
+
+</body>
+</html>

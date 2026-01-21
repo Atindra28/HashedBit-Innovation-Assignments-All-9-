@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculate Average Of Student Marks</title>
+    </head>
+<body>
+
+<script>
+    let students = [
+        { student1: { subject1: 44, subject2: 56, subject3: 87, subject4: 97, subject5: 37 } },
+        { student2: { subject1: 44, subject2: 56, subject3: 87, subject4: 97, subject5: 37 } },
+        { student3: { subject1: 44, subject2: 56, subject3: 87, subject4: 97, subject5: 37 } }
+    ];
+
+    let result = students.map(obj => {
+        let key = Object.keys(obj)[0];
+        let values = Object.values(obj[key]);
+        let avg = values.reduce((a, b) => a + b, 0) / values.length;
+        return { [key]: { average: Math.floor(avg) } };
+    });
+
+    document.write(JSON.stringify(result));
+</script>
+
+</body>
+</html>

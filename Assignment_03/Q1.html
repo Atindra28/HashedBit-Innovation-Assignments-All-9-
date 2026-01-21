@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>rmv states start with vowels</title>
+    </head>
+<body>
+
+<script>
+    let states = [
+        "Andhra Pradesh",
+        "Bihar",
+        "Odisha",
+        "Uttar Pradesh",
+        "Maharashtra",
+        "Assam",
+        "Rajasthan",
+        "Karnataka",
+        "Tamil Nadu"
+    ];
+
+    let filteredStates = states.filter(function(state) {
+        let firstLetter = state[0].toLowerCase();
+
+        return firstLetter !== 'a' &&
+               firstLetter !== 'e' &&
+               firstLetter !== 'i' &&
+               firstLetter !== 'o' &&
+               firstLetter !== 'u';
+    });
+
+    document.write("States after removing vowels:<br>");
+    document.write(filteredStates);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text Style Editor</title>
+
+  <style>
+    .text-here {
+      font-size: 55px;
+      font-family: sans-serif;
+      color: black;
+      text-decoration: none;
+      font-style: normal;
+      font-weight: normal;
+      line-height: normal;
+      text-align: left;
+      letter-spacing: normal;
+      word-spacing: normal;
+    }
+
+    .stylebt {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="text-here" id="text-container">
+    This is some example text
+  </div>
+
+  <input type="text" id="colorbox" placeholder="Enter color (red, #000)">
+  <button id="colorchange">Change Colour</button>
+
+  <br><br>
+
+  <input type="range" id="fontsize" min="10" max="100" value="55">
+
+  <br><br>
+
+  <button id="italic" class="stylebt">Italics</button>
+  <button id="underline" class="stylebt">Underline</button>
+  <button id="bold" class="stylebt">Bold</button>
+
+  <br><br>
+
+  <select id="list">
+    <option value="serif">Serif</option>
+    <option value="sans-serif" selected>Sans-Serif</option>
+    <option value="monospace">Monospace</option>
+    <option value="cursive">Cursive</option>
+    <option value="fantasy">Fantasy</option>
+  </select>
+
+  <br><br>
+
+  <button id="getstyle">Get CSS</button>
+
+  <br><br>
+
+  <p id="css-props"></p>
+
+  <script>
+    const text = document.getElementById("text-container");
+
+    // FIXED COLOR CHANGE (VALIDATION INCLUDED)
+    document.getElementById("colorchange").onclick = function () {
+      const input = document.getElementById("colorbox").value.trim();
+
+      if (input === "") {
+        alert("Please enter a color value");
+        return;
+      }
+
+      // Create a temp element to validate color
+      const test = document.createElement("span");
+      test.style.color = input;
+
+      if (test.style.color === "") {
+        alert("Invalid color! Use names like red or hex like #ff0000");
+        return;
+      }
+
+      text.style.color = input;
+    };
+
+    // Font size
+    document.getElementById("fontsize").oninput = function () {
+      text.style.fontSize = this.value + "px";
+    };
+
+    // Italic toggle
+    document.getElementById("italic").onclick = function () {
+      text.style.fontStyle =
+        text.style.fontStyle === "italic" ? "normal" : "italic";
+    };
+
+    // Underline toggle
+    document.getElementById("underline").onclick = function () {
+      text.style.textDecoration =
+        text.style.textDecoration === "underline" ? "none" : "underline";
+    };
+
+    // Bold toggle
+    document.getElementById("bold").onclick = function () {
+      text.style.fontWeight =
+        text.style.fontWeight === "bold" ? "normal" : "bold";
+    };
+
+    // Font family
+    document.getElementById("list").onchange = function () {
+      text.style.fontFamily = this.value;
+    };
+
+    // Get CSS
+    document.getElementById("getstyle").onclick = function () {
+      const css =
+        "color: " + text.style.color + "; " +
+        "font-size: " + text.style.fontSize + "; " +
+        "font-family: " + text.style.fontFamily + "; " +
+        "text-decoration: " + text.style.textDecoration + "; " +
+        "font-style: " + text.style.fontStyle + "; " +
+        "font-weight: " + text.style.fontWeight + ";";
+
+      document.getElementById("css-props").innerText = css;
+    };
+  </script>
+
+</body>
+</html>
